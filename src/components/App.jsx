@@ -21,15 +21,20 @@ export class App extends Component {
       name,
       number,
     };
-    this.state.contacts.some(
+    const isExists = this.state.contacts.some(
       i =>
         i.name.toLowerCase() === contact.name.toLowerCase() &&
         i.number === contact.number
-    )
-      ? alert(`${name} is already in contacts`)
-      : this.setState(({ contacts }) => ({
-          contacts: [contact, ...contacts],
-        }));
+    );
+
+    if (isExists) {
+      alert(`${name} is already in contacts`);
+      return; // Зупиняє виконання функції, якщо контакт вже існує
+    }
+
+    this.setState(({ contacts }) => ({
+      contacts: [contact, ...contacts],
+    }));
   };
 
   changeFilterInput = e => {
