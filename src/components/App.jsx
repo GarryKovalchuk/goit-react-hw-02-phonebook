@@ -23,8 +23,7 @@ export class App extends Component {
     };
     this.state.contacts.some(
       i =>
-        (i.name.toLowerCase() === contact.name.toLowerCase() &&
-          i.number === contact.number) ||
+        i.name.toLowerCase() === contact.name.toLowerCase() &&
         i.number === contact.number
     )
       ? alert(`${name} is already in contacts`)
